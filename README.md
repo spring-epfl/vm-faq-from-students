@@ -1,6 +1,6 @@
 # FAQs of VMs
 
-*Last Update: 04.10.2023*
+*Last Update: 05.10.2023*
 
 #### 1. "Failed to access data from shortcut" 
 
@@ -91,5 +91,32 @@ student@com301-stuent-vm:~$ codium .
 
 Now you have the code editor, enjoy ;)
 
+#### 5. Can connect to the Internet, but not [com301.epfl.ch](https://com301.epfl.ch/)
 
+**Problem** It is possible to access the Internet but not [com301.epfl.ch](https://com301.epfl.ch/) via a browser or the terminal.
 
+**Symptoms** Pinging [com301.epfl.ch](https://com301.epfl.ch/) resolves the hostname to `127.0.1.1` but pinging any other website pings to a normal IP.
+
+**Solution** One solution of this problem is the configuration of the VM.
+
+Inside a terminal,
+
+```bash
+$ cat /etc/hosts
+```
+
+> It prints the content of the file `/etc/hosts`.
+
+If the following line appears:
+
+```
+127.0.1.1            com301.epfl.ch com301
+```
+
+You should remove that line using any editor: the quickest way is to use `nano`:
+
+```bash
+$ sudo nano /etc/hosts
+```
+
+and it should work!
